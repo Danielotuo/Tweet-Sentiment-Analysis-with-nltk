@@ -24,4 +24,4 @@ import random
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 
-![Screenshot](image1.png)
+![Screenshot](image1.PNG)
