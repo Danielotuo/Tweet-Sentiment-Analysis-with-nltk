@@ -25,3 +25,6 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 
 ![Screenshot](image1.PNG)
+![Screenshot](image2.PNG)
+![Screenshot](image3.PNG)
+![Screenshot](image4.PNG)
