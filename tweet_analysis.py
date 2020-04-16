@@ -18,8 +18,10 @@ st.image('emojiemotions.png', use_column_width=True)
 
 @st.cache
 
-# Function to get tweet data
+
 def get_tweets():
+    """Get tweets from twitter"""
+    
     tweetCriteria = got.manager.TweetCriteria().setQuerySearch('dDazze') \
         .setSince("2010-01-01") \
         .setUntil("2020-04-09") \
@@ -76,8 +78,9 @@ st.subheader("Sentimental Words Found in Tweets")
 st.write(df)
 
 
-# Prepare data for matplotlip plot
 def prepare_date():
+    """ Prepare data for matplotlip plot"""
+
     df2 = df.groupby('sentiment').size().reset_index(name='counts')
     n = df2['sentiment'].unique().__len__() + 1
     all_colors = list(plt.cm.colors.cnames.keys())
@@ -97,8 +100,10 @@ prepare_date()
 
 
 
-# Call nltk sentiment analysis on cleaned tweets
+
 def sentiment_analysis(sentiment_text):
+    """Call nltk sentiment analysis on cleaned tweets"""
+
     score = SentimentIntensityAnalyzer().polarity_scores(sentiment_text)
     scores = pd.DataFrame.from_dict(score, orient='index').reset_index()
     df_scores = scores.rename(columns={'index': 'State', 0: 'Score'})
