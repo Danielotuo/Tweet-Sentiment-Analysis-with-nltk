@@ -1,1 +1,5 @@
+matplotlib
+pandas
+nltk
+GetOldTweets3
 streamlit==0.57.0

@@ -11,12 +11,9 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 
 def main():
-
     st.title("Sentiment Analysis of Tweets")
     st.subheader("Check the sentiment of your tweets")
     st.image('emojiemotions.png', use_column_width=True)
-
-
 
     user = st.text_input('Enter twitter username without the @')
     st.write(user)
@@ -27,33 +24,30 @@ def main():
     date_until = st.text_input('Enter date of tweets until year-month-day')
     st.write(date_until)
 
-
-
-
     def get_username():
+        """function to get twitter username"""
         return user
-
 
     username = get_username()
 
-
     def get_date_since():
+        """function to process data range"""
         return date_from
-
 
     date_since = get_date_since()
 
-
     def get_date_until():
+        """function to process data range"""
         return date_until
-
 
     date_till = get_date_until()
 
-
     @st.cache
     def get_tweets():
-        """Get tweets from twitter"""
+        """
+        Get tweets from twitter,
+        setting max tweets to 5000
+        """
 
         tweetCriteria = got.manager.TweetCriteria().setQuerySearch(username) \
             .setSince(date_since) \
@@ -66,7 +60,6 @@ def main():
         # Iterating through tweets lists and storing them temporarily in tweet variable
         text_tweets = [[tweet.text] for tweet in tweets]
         return text_tweets
-
 
     text = ""
     text_tweets = get_tweets()
@@ -108,7 +101,6 @@ def main():
     st.subheader("Sentimental Words Found in Tweets")
     st.write(df)
 
-
     def prepare_date():
         """ Prepare data for matplotlip plot"""
 
@@ -134,10 +126,8 @@ def main():
         fig.autofmt_xdate()
         st.pyplot()
 
-
     st.subheader("A Bar Chart Analysis of Tweets ")
     prepare_date()
-
 
     def sentiment_analysis(sentiment_text):
         """Call nltk sentiment analysis on cleaned tweets"""
@@ -175,7 +165,6 @@ def main():
             return "Positive Sentiment"
         else:
             return "Neutral Vibe"
-
 
     sent = sentiment_analysis(cleaned_text)
     st.write("Sentiment: ", sent)
