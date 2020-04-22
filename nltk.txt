@@ -3,3 +3,4 @@ wordnet
 pros_cons
 reuters
 stopwords
+vader_lexicon
