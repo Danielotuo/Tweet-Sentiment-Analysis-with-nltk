@@ -10,9 +10,6 @@ import random
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 
-
-
-
 def main():
     st.title("Sentiment Analysis of Tweets")
     st.subheader("Check the sentiment of your tweets")
@@ -77,7 +74,7 @@ def main():
     # Split sentences into words
     tokenized_words = word_tokenize(cleaned_text, "english")
 
-    # Add the splitted words into the final words
+    # Add the split words into the final words
     final_words = []
     for word in tokenized_words:
         if word not in stopwords.words('english'):
